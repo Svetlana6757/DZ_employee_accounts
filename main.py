@@ -44,19 +44,19 @@ class Admin(User):
     def add_user(self, user):
         if user not in self._users:
             self._users.append(user)
-            print(f"Пользователь User {user.get_name()} добавлен")
+            print(f"Пользователь {user.get_name()} добавлен")
         else:
-            print(f" Пользователь {user.get_name()}уже есть в базе")
+            print(f"Пользователь {user.get_name()} уже есть в базе")
 
     def remove_user(self, user):
         if user in self._users:
             self._users.remove(user)
             print(f"Пользователь {user.get_name()} удален")
         else:
-            print("Пользователь {user.get_name()} не найден")
+            print(f"Пользователь {user.get_name()} не найден")
 
     def list_users(self):
-        print("Users list:")
+        print("Список пользователей:")
         for user in self._users:
             print(user)
 
@@ -68,6 +68,10 @@ user2 = User('003', 'Максим Птеров')
 
 admin.add_user(user1)
 admin.add_user(user2)
+admin.list_users()
+admin.add_user(user2)
+
+admin.remove_user(user1)
 admin.list_users()
 
 admin.remove_user(user1)
