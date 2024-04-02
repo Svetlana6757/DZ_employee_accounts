@@ -35,3 +35,40 @@ class User:
     def __str__(self):
         return f"ID: {self._user_id}, Name: {self._name}, Access Level: {self._access_level}"
 
+
+class Admin(User):
+    def __init__(self, user_id, name):
+        super().__init__(user_id, name, 'admin')
+        self._users = []
+
+    def add_user(self, user):
+        if user not in self._users:
+            self._users.append(user)
+            print(f"Пользователь User {user.get_name()} добавлен")
+        else:
+            print(f" Пользователь User {user.get_name()}уже есть в базе")
+
+    def remove_user(self, user):
+        if user in self._users:
+            self._users.remove(user)
+            print(f"Пользователь User {user.get_name()} удален")
+        else:
+            print("Пользователь User {user.get_name()} не найден")
+
+    def list_users(self):
+        print("Users list:")
+        for user in self._users:
+            print(user)
+
+
+# Пример использования
+admin = Admin('001', 'Admin User')
+user1 = User('002', 'Игорь Иванов')
+user2 = User('003', 'Максим Птеров')
+
+admin.add_user(user1)
+admin.add_user(user2)
+admin.list_users()
+
+admin.remove_user(user1)
+admin.list_users()
