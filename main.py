@@ -14,3 +14,8 @@ ID, имя и уровень доступа ('user' для обычных сот
 3.Инкапсуляция данных: Убедись, что атрибуты классов защищены от прямого доступа
 и модификации снаружи. Предоставь доступ к необходимым атрибутам через методы (например, get и set методы).
 """
+class User:
+    def __init__(self, user_id, name, access_level='user'):
+        self._user_id = user_id
+        self._name = name
+        self._access_level = access_level
